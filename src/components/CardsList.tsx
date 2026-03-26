@@ -1,5 +1,5 @@
 import { motion } from "motion/react";
-
+import econ from "../assets/econ.png";
 const container = {
   hidden: {},
   show: {
@@ -36,6 +36,8 @@ export default function CardsList() {
             O desperdício de água impacta diretamente o meio ambiente e o abastecimento.
             Pequenas atitudes fazem grande diferença.
           </p>
+
+          
         </motion.div>
       ))}
     </motion.div>

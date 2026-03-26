@@ -9,6 +9,8 @@ import Categorias from "./pages/Categorias";
 import Desafios from "./pages/Desafios";
 import Progresso from "./pages/Progresso";
 
+
+
 function AnimatedRoutes() {
   const location = useLocation();
 
@@ -42,7 +44,7 @@ export default function App() {
         <main className="flex-1">
           <AnimatedRoutes />
         </main>
-
+       
         <footer className="bg-blue-700 text-white text-center py-4">
           © 2026 Água Consciente
         </footer>
