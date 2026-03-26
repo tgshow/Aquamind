@@ -6,7 +6,6 @@ export default function Home() {
   return (
     <div className="max-w-5xl mx-auto px-6 py-16 text-center">
 
-      {/* 🧠 TÍTULO */}
       <motion.h1
         className="text-4xl font-bold text-blue-700 mb-4"
         initial={{ opacity: 0, y: -40 }}
@@ -16,7 +15,6 @@ export default function Home() {
         Bem-vindo ao Água Consciente
       </motion.h1>
 
-      {/* 📝 TEXTO */}
       <motion.p
         className="text-gray-500 text-lg mb-12"
         initial={{ opacity: 0, y: 40 }}
@@ -68,7 +66,6 @@ export default function Home() {
 
 
       <CardsList />
-
     </div>
   );
 }

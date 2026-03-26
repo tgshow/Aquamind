@@ -5,7 +5,6 @@ import { AnimatePresence, motion } from "motion/react";
 
 import Home from "./pages/Home";
 import Dica from "./pages/Dica";
-import Categorias from "./pages/Categorias";
 import Desafios from "./pages/Desafios";
 import Progresso from "./pages/Progresso";
 
@@ -26,7 +25,6 @@ function AnimatedRoutes() {
         <Routes location={location}>
           <Route path="/" element={<Home />} />
           <Route path="/dica" element={<Dica />} />
-          <Route path="/categorias" element={<Categorias />} />
           <Route path="/desafios" element={<Desafios />} />
           <Route path="/progresso" element={<Progresso />} />
         </Routes>
@@ -45,9 +43,7 @@ export default function App() {
           <AnimatedRoutes />
         </main>
        
-        <footer className="bg-blue-700 text-white text-center py-4">
-          © 2026 Água Consciente
-        </footer>
+        
       </div>
     </Router>
   );
