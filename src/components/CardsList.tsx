@@ -1,5 +1,4 @@
 import { motion } from "motion/react";
-import econ from "../assets/econ.png";
 const container = {
   hidden: {},
   show: {
