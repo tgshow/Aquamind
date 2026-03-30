@@ -18,8 +18,6 @@ export default function Header() {
 
       <nav className="flex flex-wrap justify-center gap-4 md:gap-8 text-sm text-gray-600">
         <Link to="/">Home</Link>
-        <Link to="/dica">Dicas</Link>
-
         <Link to="/desafios">Desafios</Link>
         <Link to="/progresso">Progresso</Link>
       </nav>

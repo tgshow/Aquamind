@@ -1,10 +1,9 @@
 import { BrowserRouter as Router, Routes, Route, useLocation } from "react-router-dom";
 import Header from "./components/Header";
 import { AnimatePresence, motion } from "motion/react";
-
+import { DesafiosProvider } from "./context/DesafiosContext";
 
 import Home from "./pages/Home";
-import Dica from "./pages/Dica";
 import Desafios from "./pages/Desafios";
 import Progresso from "./pages/Progresso";
 
@@ -24,7 +23,6 @@ function AnimatedRoutes() {
       >
         <Routes location={location}>
           <Route path="/" element={<Home />} />
-          <Route path="/dica" element={<Dica />} />
           <Route path="/desafios" element={<Desafios />} />
           <Route path="/progresso" element={<Progresso />} />
         </Routes>
