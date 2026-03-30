@@ -21,17 +21,39 @@ export default function Progresso() {
     ? Math.round((totalEconomizado / totalPossivel) * 100)
     : 0;
 
-  // ⭐ XP e nível
   const xp = totalEconomizado;
   const nivel = Math.floor(xp / 100);
 
-  // 📊 Dados do gráfico
-  const data = desafios.map(d => ({
-    nome: d.nome.slice(0, 10),
-    economia: d.concluido ? d.economia : 0,
-  }));
+  const data = desafios.map(d => {
+  let nomeCurto = "";
 
-  // 🏆 Ranking fake
+  if (d.nome.toLowerCase().includes("banho")) {
+    nomeCurto = "Tomar banho";
+  } else if (d.nome.toLowerCase().includes("torneira")) {
+    nomeCurto = "fechar torneira";
+  } else if (d.nome.toLowerCase().includes("carro")) {
+    nomeCurto = "Lava o carro";
+  } else if (d.nome.toLowerCase().includes("vazamento")) {
+    nomeCurto = "Consertar vazamento";
+  } else if (d.nome.toLowerCase().includes("reutilizar")) {
+    nomeCurto = "Reutilizar água";
+  } else if (d.nome.toLowerCase().includes("calçada")) {
+    nomeCurto = "Lavar calçada";
+  } else if (d.nome.toLowerCase().includes("regar")) {
+    nomeCurto = "Regar plantas";
+  } else if (d.nome.toLowerCase().includes("captar")) {
+    nomeCurto = "Captar água da chuva";
+   }
+  else {
+    nomeCurto = d.nome.split(" ")[0]; 
+  }
+
+  return {
+    nome: nomeCurto,
+    economia: d.concluido ? d.economia : 0,
+  };
+});
+
   const ranking = [
     { nome: "João", xp: 320 },
     { nome: "Maria", xp: 280 },
@@ -51,50 +73,63 @@ export default function Progresso() {
       {/* CARDS */}
       <div className="grid md:grid-cols-4 gap-4 mb-6">
 
-        <div className="bg-blue-100 p-4 rounded-xl">
+        <div className="bg-blue-100 p-4 rounded-xl shadow">
           💧 <b>{totalEconomizado}L</b>
           <p className="text-sm">Economia</p>
         </div>
 
-        <div className="bg-green-100 p-4 rounded-xl">
+        <div className="bg-green-100 p-4 rounded-xl shadow">
           ✅ <b>{concluidos.length}</b>
           <p className="text-sm">Concluídos</p>
         </div>
 
-        <div className="bg-purple-100 p-4 rounded-xl">
+        <div className="bg-purple-100 p-4 rounded-xl shadow">
           📈 <b>{porcentagem}%</b>
           <p className="text-sm">Progresso</p>
         </div>
 
-        <div className="bg-yellow-100 p-4 rounded-xl">
+        <div className="bg-yellow-100 p-4 rounded-xl shadow">
           ⭐ <b>Nível {nivel}</b>
           <p className="text-sm">{xp} XP</p>
         </div>
 
       </div>
 
-      {/* BARRA */}
+
       <div className="mb-6">
         <p className="text-sm mb-2">Progresso geral</p>
         <div className="w-full bg-gray-200 h-4 rounded-full">
           <div
-            className="bg-blue-600 h-4 rounded-full"
+            className="bg-blue-600 h-4 rounded-full transition-all duration-500"
             style={{ width: `${porcentagem}%` }}
           />
         </div>
       </div>
 
-      {/* GRÁFICO */}
+
       <FadeUp>
         <div className="bg-white p-4 rounded-xl shadow mb-6">
           <h3 className="mb-4 font-semibold">📊 Economia por desafio</h3>
 
-          <ResponsiveContainer width="100%" height={250}>
+          <ResponsiveContainer width="100%" height={300}>
             <BarChart data={data}>
-              <XAxis dataKey="nome" />
+              
+              <XAxis
+                dataKey="nome"
+                angle={-25}
+                textAnchor="end"
+                interval={0}
+                height={80}
+              />
+
               <YAxis />
-              <Tooltip />
+
+              <Tooltip
+                formatter={(value: any) => [`${value ?? 0}L`, "Economia"]}
+              />
+
               <Bar dataKey="economia" />
+
             </BarChart>
           </ResponsiveContainer>
         </div>
